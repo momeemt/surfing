@@ -2,7 +2,7 @@
 
 version       = "0.1.0"
 author        = "Mutsuha Asada"
-description   = "A new awesome nimble package"
+description   = "Surfing is a highly functional CLI for Base64."
 license       = "MIT"
 srcDir        = "src"
 bin           = @["surfing"]
