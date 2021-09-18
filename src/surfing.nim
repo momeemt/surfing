@@ -6,10 +6,13 @@ proc decode (message: string, time: bool = false): int =
     utils.hr()
     echo "decode: " & trans.decode(message)
 
-proc encode (message: string, num: uint = 1, time: bool = false): int =
+proc encode (message: string, num: uint = 1, max: int = high(int), time: bool = false): int =
   utils.timeMeasure(time):
     utils.hr()
-    echo "encode: " & trans.encode(message, num)
+    if max == high(int):
+      echo "encode: " & trans.encode(message, num)
+    else:
+      echo "encode: " & trans.encode(message, max)
 
 when isMainModule:
   import cligen

@@ -10,4 +10,12 @@ proc decode* (encode_str: string): string =
 proc encode* (raw_str: string, times: uint = 1): string =
   result = raw_str
   for _ in 1..times:
-    result = base64.encode(result) 
+    result = base64.encode(result)
+
+proc encode* (raw_str: string, max: int): string =
+  result = raw_str
+  while true:
+    var encoded = base64.encode(result)
+    if encoded.len <= max:
+      result = encoded
+    else: break
