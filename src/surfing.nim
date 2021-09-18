@@ -1,23 +1,21 @@
 from private/transformation as trans import nil
 from private/utils import nil
 
-proc decode (message: string, time: bool = false): int =
+proc decode (message: string, time: bool = false, simple: bool = false): int =
   utils.timeMeasure(time):
-    utils.hr()
-    echo "decode: " & trans.decode(message)
+    utils.echoResult("decode", trans.decode(message), simple)
 
-proc encode (message: string, num: uint = 1, max: int = high(int), time: bool = false): int =
+proc encode (message: string, num: uint = 1, max: int = high(int), time: bool = false, simple: bool = false): int =
   utils.timeMeasure(time):
-    utils.hr()
     if max == high(int):
-      echo "encode: " & trans.encode(message, num)
+      utils.echoResult("encode", trans.encode(message, num), simple)
     else:
-      echo "encode: " & trans.encode(message, max)
+      utils.echoResult("encode", trans.encode(message, max), simple)
 
 when isMainModule:
   import cligen
 
   dispatchMulti(
-    [decode, short = { "message": 'm', "time": 't' }],
-    [encode, short = { "message": 'm', "num": 'n', "time": 't' }]
+    [decode, short = { "message": 'm', "time": 't', "simple": 's' }],
+    [encode, short = { "message": 'm', "num": 'n', "time": 't', "simple": 's' }]
   )

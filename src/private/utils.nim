@@ -10,3 +10,10 @@ template timeMeasure* (condition: bool, body: untyped): untyped =
 
 proc hr* =
   echo "---------------------------------"
+
+proc echoResult* (funcName, res: string, simple: bool) =
+  if simple:
+    echo res
+  else:
+    hr()
+    echo funcName, ": ", res
